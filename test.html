@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View using a template in backbone</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="js/libs/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="js/libs/underscore.js"></script>
+	<script src="js/libs/backbone.js"></script>
+	<style type="text/css">
+	.box {
+		border: #CCCCCC solid 1px;
+		padding: 15px;
+		margin-bottom: 10px;
+	}
+	</style>
+</head>
+<body>
+
+<div class="box col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xs-8 col-sm-8 col-md-8 col-lg-8">	
+	<script type="text/template" id="head_temp">
+		<h1>Title - Head</h1>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<p>
+	</script>
+	<div id="head1Container"></div>
+</div>
+
+<div class="box col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xs-8 col-sm-8 col-md-8 col-lg-8">
+	<script type="text/template" id="body_temp">
+		<h4>Body</h4>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
+	</script>
+	<div id="body1Container"></div>
+</div>
+
+<script type="text/javascript">
+	var headView = Backbone.View.extend({
+		initialize: function() {
+			this.render();
+		},
+		render: function() {
+			var template = _.template( $("#head_temp").html(), {} );
+			this.$el.html( template );
+		}
+	});
+
+	var h = new headView({ el: $("#head1Container") });
+
+	var bodyView = Backbone.View.extend({
+		initialize: function() {
+			this.render();
+		},
+		render: function() {
+			var template = _.template( $("#body_temp").html(), {} );
+			this.$el.html( template );
+		}
+	});
+
+	var b = new bodyView({ el: $("#body1Container") });
+
+
+</script>
+</body>
+</html>

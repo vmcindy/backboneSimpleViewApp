@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <title>Backbone App</title>
+  <link rel="stylesheet" href="css/globalStyles.css">
+</head>
+
+<body>
+
+  <div class="site">
+    <div class="logo">  
+      <img src="images/site/placeholder.png" width="100" height="100" alt="Logo" />
+    </div>
+    <div id="allObjects"></div>
+    <div id="copy"></div>
+  </div> 
+
+    <script id="objectElement" type="text/template">
+      <a href="#<%= link %>"><img src="<%= img %>" alt="<%= name %>" class="image" /></a>
+      <ul>
+        <li class="objectInfo"><strong>Name:</strong> <%= name %></li>
+
+      </ul>
+    </script>
+
+<script type="text/template" id="img_temp">
+  <label>Pic Label</label>
+  <img src="images/site/placeholder.png" width="250" height="250" alt="Logo" />
+</script>
+
+<div id="img1Container"></div>
+<div id="img2Container"></div>
+
+<script type="text/javascript">
+  var ImageView = Backbone.View.extend({
+    initialize: function() {
+      this.render();
+    },
+    render: function() {
+      var template = _.template( $("#img_temp").html(), {} );
+      this.$el.html( template );
+    }
+  });
+
+  var a = new ImageView({ el: $("#img1Container") });
+  var b = new ImageView({ el: $("#img2Container") });
+
+
+</script>
+
+
+
+
+  <script src="js/libs/jquery.js"></script>
+  <script src="js/libs/underscore.js"></script>
+  <script src="js/libs/backbone.js"></script>
+  <script src="js/models/singleObjectModel.js"></script>
+  <script src="js/views/singleObjectView.js"></script>
+  <script src="js/views/allObjectsView.js"></script>
+  <script src="js/collections/allObjects.js"></script>
+  <script src="js/routes/router.js"></script>
+  <script src="js/objectApp.js"></script>
+
+</body>
+</html>
